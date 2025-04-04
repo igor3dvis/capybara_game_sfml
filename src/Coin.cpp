@@ -11,7 +11,7 @@ bool Coin::textureLoaded = false;
 bool Coin::loadTexture(const std::string& filename) {
     if (!textureLoaded) {
         if (!texture.loadFromFile(filename)) {
-            std::cout << "Не удалось загрузить текстуру для монет: " << filename << std::endl;
+            std::cout << "Can't upload texture for C: " << filename << std::endl;
             return false;
         }
         textureLoaded = true;
@@ -54,8 +54,8 @@ void Coin::init(float x, float y, bool useTextureAnimation) {
         int actualFrames = std::min(framesCount, maxPossibleFrames);
 
         if (actualFrames < framesCount) {
-            std::cout << "Предупреждение: текстура монет слишком маленькая для " << framesCount
-                << " кадров. Используем только " << actualFrames << " кадров." << std::endl;
+            std::cout << "Warning: texture for the coin too smoll for " << framesCount
+                << " frames. Can be used just " << actualFrames << " frames." << std::endl;
             // Обновляем framesCount
             framesCount = actualFrames;
         }
@@ -69,7 +69,7 @@ void Coin::init(float x, float y, bool useTextureAnimation) {
         if (!frames.empty()) {
             sprite.setTextureRect(frames[0]);
         }
-        sprite.setOrigin(frameWidth / 2, frameHeight / 2);
+        sprite.setOrigin(frameWidth / static_cast<float>(2), frameHeight / static_cast<float>(2));
         sprite.setPosition(x, y);
     }
 

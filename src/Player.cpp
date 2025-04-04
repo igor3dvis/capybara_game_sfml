@@ -8,8 +8,8 @@ Player::Player() {
 
 bool Player::loadTexture(const std::string& filename) {
     if (!texture.loadFromFile(filename)) {
-        std::cout << "Не удалось загрузить текстуру " << filename << "!" << std::endl;
-        std::cout << "Создаем пустую текстуру 272x68 пикселей." << std::endl;
+        std::cout << "Can't upload texture for Player " << filename << "!" << std::endl;
+        std::cout << "Create empty texture 272x68 pixels." << std::endl;
 
         // Создаем пустую текстуру в случае ошибки
         texture.create(272, 68);
@@ -46,8 +46,8 @@ void Player::setupAnimationFrames() {
     int actualFrames = std::min(framesInRow, maxPossibleFrames);
 
     if (actualFrames < framesInRow) {
-        std::cout << "Предупреждение: текстура слишком маленькая для " << framesInRow
-            << " кадров. Используем только " << actualFrames << " кадров." << std::endl;
+        std::cout << "This texture to smoll for " << framesInRow
+            << " frames. Use just " << actualFrames << " frames." << std::endl;
         // Обновляем framesInRow, чтобы другие методы знали о реальном количестве кадров
         framesInRow = actualFrames;
     }
@@ -60,7 +60,7 @@ void Player::setupAnimationFrames() {
     // Проверяем, что jumpFrame находится в допустимом диапазоне
     if (jumpFrame >= animationFrames.size()) {
         jumpFrame = animationFrames.size() - 1;
-        std::cout << "Предупреждение: jumpFrame вне диапазона, установлен в " << jumpFrame << std::endl;
+        std::cout << "Atention: jumpFrame out jff diaoasone, is setted at " << jumpFrame << std::endl;
     }
 
     // Устанавливаем начальный кадр
@@ -155,7 +155,7 @@ void Player::updateAnimation(float deltaTime) {
             // Защитный код: если кадр прыжка недействителен, используем первый кадр
             currentFrame = 0;
             // Можно также вывести предупреждение для отладки
-            std::cout << "Предупреждение: недопустимый кадр прыжка: " << jumpFrame << std::endl;
+            std::cout << "Wornig: unusefull frame for jump: " << jumpFrame << std::endl;
         }
         useWalkingAnim = false;
     }
@@ -204,8 +204,8 @@ void Player::updateAnimation(float deltaTime) {
     else {
         // Если индекс недопустимый, используем первый кадр и выведем предупреждение
         currentFrame = 0;
-        std::cout << "Предупреждение: недопустимый индекс кадра: " << currentFrame
-            << " (размер: " << animationFrames.size() << ")" << std::endl;
+        std::cout << "Warning: unusefull index of frame: " << currentFrame
+            << " (size: " << animationFrames.size() << ")" << std::endl;
         if (!animationFrames.empty()) {
             sprite.setTextureRect(animationFrames[0]);
         }

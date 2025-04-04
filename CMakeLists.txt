@@ -25,6 +25,9 @@ set(SOURCES
     src/Player.cpp
     src/Platform.cpp
     src/Coin.cpp
+    src/Button.cpp
+    src/GamePlayState.cpp
+    src/MenuState.cpp
 )
 
 # Проверяем существование каждого файла

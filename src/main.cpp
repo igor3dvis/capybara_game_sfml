@@ -9,16 +9,16 @@ int main() {
             game.run();
         }
         else {
-            std::cerr << "Не удалось инициализировать игру!" << std::endl;
+            std::cerr << "The Game is not initialized!" << std::endl;
             return -1;
         }
     }
     catch (const std::exception& e) {
-        std::cerr << "Ошибка: " << e.what() << std::endl;
+        std::cerr << "Error: " << e.what() << std::endl;
         return -1;
     }
     catch (...) {
-        std::cerr << "Неизвестная ошибка!" << std::endl;
+        std::cerr << "Unknown error!" << std::endl;
         return -1;
     }
 
